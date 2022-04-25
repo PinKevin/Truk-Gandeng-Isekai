@@ -5,4 +5,3 @@ Fitur :
 - Bisa nabrak palang
 - Palang yang bisa buka tutup
 - Gedung, jalan, tiang listrik, kabel listrik
--
