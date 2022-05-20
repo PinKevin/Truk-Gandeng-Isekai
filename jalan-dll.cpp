@@ -29,10 +29,10 @@ void Jalan() {
 	glPushMatrix();
 		glColor3f(0.5, 0.5, 0.5);
 		glBegin(GL_QUADS);
-			glVertex3f(-4, 0, -20);
-			glVertex3f(-4, 0, 4);
-			glVertex3f(20, 0, 4);	
-			glVertex3f(20, 0, -20);		
+			glVertex3f(-4, 0, -24);
+			glVertex3f(-4, 0, 8);
+			glVertex3f(20, 0, 9);	
+			glVertex3f(20, 0, -24);		
 		glEnd();
 	glPopMatrix();
 }
@@ -61,11 +61,101 @@ void GarisJalan() {
 			glTranslatef(4.4, 0, 0);
 		}
 	glPopMatrix();
+	glPushMatrix();
+		glBegin(GL_QUADS);
+			glVertex3f(-4, 0.001, -20.25);
+			glVertex3f(-4, 0.001, -19.65);
+			glVertex3f(20, 0.001, -19.65);	
+			glVertex3f(20, 0.001, -20.25);	
+		glEnd();
+		glTranslatef(0, 0, 24);
+		glBegin(GL_QUADS);
+			glVertex3f(-4, 0.001, -20.25);
+			glVertex3f(-4, 0.001, -19.65);
+			glVertex3f(20, 0.001, -19.65);	
+			glVertex3f(20, 0.001, -20.25);	
+		glEnd();
+	glPopMatrix();
 }
 
 void JalanTotal() {
 	Jalan();
 	GarisJalan();
+}
+
+void Trotoar(int N, float red1, float green1, float blue1, float red2, float green2, float blue2) {
+	for (int j = 1; j <= N; j++) {
+			glColor3f(red1, green1, blue1);
+			glBegin(GL_QUADS); // merah depan
+				glVertex3f(-4.0f, 1.0f, 0.0f);
+				glVertex3f(-4.0f, 0.0f, 0.0f);
+				glVertex3f(-2.0f, 0.0f, 0.0f);
+				glVertex3f(-2.0f, 1.0f, 0.0f);
+			glEnd();
+			glBegin(GL_QUADS); // merah belakang
+				glVertex3f(-4.0f, 1.0f, -2.0f);
+				glVertex3f(-4.0f, 0.0f, -2.0f);
+				glVertex3f(-2.0f, 0.0f, -2.0f);
+				glVertex3f(-2.0f, 1.0f, -2.0f);
+			glEnd();
+			if (j == 1) {
+				glBegin(GL_QUADS); // merah samping
+					glVertex3f(-4.0f, 1.0f, -2.0f);
+					glVertex3f(-4.0f, 0.0f, -2.0f);
+					glVertex3f(-4.0f, 0.0f, 0.0f);
+					glVertex3f(-4.0f, 1.0f, 0.0f);
+				glEnd();
+			}
+			glBegin(GL_QUADS); // merah atas
+				glVertex3f(-4.0f, 1.0f, -2.0f);
+				glVertex3f(-4.0f, 1.0f, 0.0f);
+				glVertex3f(-2.0f, 1.0f, 0.0f);
+				glVertex3f(-2.0f, 1.0f, -2.0f);
+			glEnd();
+			glBegin(GL_QUADS); // merah bawah
+				glVertex3f(-4.0f, 0.0f, -2.0f);
+				glVertex3f(-4.0f, 0.0f, 0.0f);
+				glVertex3f(-2.0f, 0.0f, 0.0f);
+				glVertex3f(-2.0f, 0.0f, -2.0f);
+			glEnd();
+			
+			glColor3f(red2, green2, blue2);
+			glBegin(GL_QUADS); // putih depan
+				glVertex3f(-2.0f, 0.0f, 0.0f);
+				glVertex3f(-2.0f, 1.0f, 0.0f);
+				glVertex3f(0.0f, 1.0f, 0.0f);
+				glVertex3f(0.0f, 0.0f, 0.0f);
+			glEnd();
+			glBegin(GL_QUADS); // putih belakang
+				glVertex3f(-2.0f, 0.0f, -2.0f);
+				glVertex3f(-2.0f, 1.0f, -2.0f);
+				glVertex3f(0.0f, 1.0f, -2.0f);
+				glVertex3f(0.0f, 0.0f, -2.0f);
+			glEnd();
+			if (j == N) {
+				glBegin(GL_QUADS); // putih samping
+					glVertex3f(0.0f, 1.0f, -2.0f);
+					glVertex3f(0.0f, 0.0f, -2.0f);
+					glVertex3f(0.0f, 0.0f, 0.0f);
+					glVertex3f(0.0f, 1.0f, 0.0f);
+				glEnd();
+			}
+			glBegin(GL_QUADS); // putih atas
+				glVertex3f(-2.0f, 1.0f, -2.0f);
+				glVertex3f(-2.0f, 1.0f, 0.0f);
+				glVertex3f(-0.0f, 1.0f, 0.0f);
+				glVertex3f(-0.0f, 1.0f, -2.0f);
+			glEnd();
+			glBegin(GL_QUADS); // putih bawah
+				glVertex3f(-2.0f, 0.0f, -2.0f);
+				glVertex3f(-2.0f, 0.0f, 0.0f);
+				glVertex3f(-0.0f, 0.0f, 0.0f);
+				glVertex3f(-0.0f, 0.0f, -2.0f);
+			glEnd();
+			
+			
+			glTranslatef(4, 0, 0);
+		}
 }
 
 void Palang(int N, float red1, float green1, float blue1, float red2, float green2, float blue2) {
@@ -122,7 +212,7 @@ void Palang(int N, float red1, float green1, float blue1, float red2, float gree
 				glVertex3f(0.0f, 1.0f, -0.5f);
 				glVertex3f(0.0f, 0.0f, -0.5f);
 			glEnd();
-			if (j == 4) {
+			if (j == N) {
 				glBegin(GL_QUADS); // putih samping
 					glVertex3f(0.0f, 1.0f, -0.5f);
 					glVertex3f(0.0f, 0.0f, -0.5f);
@@ -167,66 +257,81 @@ void PelengkapPalang(float red1, float green1, float blue1, float Rc, float Gc, 
 	glPopMatrix();
 }
 
-void TiangListrik(float red1, float green1, float blue1, float red2, float green2, float blue2) {
+void TiangListrik(float red1, float green1, float blue1, float red2, float green2, float blue2, float red3, float green3, float blue3) {
 	// tengah
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
-		Balok(-3, -2, 7, 0, 0.5, 0);
+		Balok(-3.5, -2.5, 14, 1, 0.5, 0);
 		glColor3f(red2, green2, blue2);
-		Balok(-3, -2, 7, 8, 0.5, 0);
+		Balok(-3.5, -2.5, 14, 15, 0.5, 0);
 	glPopMatrix();
-	// pucuk kanan
-	glPushMatrix();
-		glColor3f(red1, green1, blue1);
-		Balok(-1, 0, 6, 7, 0.5, 0);
-		glColor3f(red2, green2, blue2);
-		Balok(-1, 0, 7, 8, 0.5, 0);
-	glPopMatrix();
+//	// pucuk kanan
+//	glPushMatrix();
+//		glColor3f(red1, green1, blue1);
+//		Balok(-1, 0, 6, 7, 0.5, 0);
+//		glColor3f(red2, green2, blue2);
+//		Balok(-1, 0, 7, 8, 0.5, 0);
+//	glPopMatrix();
 	// pucuk kiri
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
-		Balok(-5, -4, 6, 7, 0.5, 0);
+		Balok(-5.5, -4.5, 13, 14, 0.5, 0);
 		glColor3f(red2, green2, blue2);
-		Balok(-5, -4, 7, 8, 0.5, 0);
+		Balok(-5.5, -4.5, 14, 15, 0.5, 0);
 	glPopMatrix();
-	// penghubung kanan
-	glPushMatrix();
-		glColor3f(red1, green1, blue1);
-		Balok(-2, 0, 5, 6, 0.5, 0);
-	glPopMatrix();
+//	// penghubung kanan
+//	glPushMatrix();
+//		glColor3f(red1, green1, blue1);
+//		Balok(-2, 0, 5, 6, 0.5, 0);
+//	glPopMatrix();
 	// penghubung kiri
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
-		Balok(-5, -3, 5, 6, 0.5, 0);
+		Balok(-5.5, -3.5, 12, 13, 0.5, 0);
 	glPopMatrix();
+	glPushMatrix();
+		Balok(-2.5, 8, 12, 13, 0.5, 0);
+		glColor3f(red3, green3, blue3);
+		Balok(6, 8, 11, 12, 0.5, 0);
+	glPopMatrix();
+	
 }
 
 void KabelListrik(float red1, float green1, float blue1, float JarakTiang) {
 	// kabel tengah
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
-		Balok(-2.65, -2.35, 7.25, 7.75, 0, JarakTiang);
+		Balok(-3.15, -2.85, 14.25, 14.75, 0, JarakTiang);
 	glPopMatrix();
-	// kabel kanan
-	glPushMatrix();
-		glColor3f(red1, green1, blue1);
-		Balok(-0.65, -0.35, 7.25, 7.75, 0, JarakTiang);
-	glPopMatrix();
+//	// kabel kanan
+//	glPushMatrix();
+//		glColor3f(red1, green1, blue1);
+//		Balok(-0.65, -0.35, 7.25, 7.75, 0, JarakTiang);
+//	glPopMatrix();
 	// kabel kiri
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
-		Balok(-4.65, -4.35, 7.25, 7.75, 0, JarakTiang);
+		Balok(-5.25, -4.85, 14.25, 14.75, 0, JarakTiang);
 	glPopMatrix();
 } 
 
-void Gedung(float red1, float green1, float blue1, float red2, float green2, float blue2, float red3, float green3, float blue3) {
+void Gedung3(float red1, float green1, float blue1, float red2, float green2, float blue2, float red3, float green3, float blue3) {
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
 		Balok(-30, 0, 40, 0, 30, 0);
 		glColor3f(red2, green2, blue2);
-		Balok(-50, -35, 25, 0, 20, 0);
+		Balok(-50, -30.1, 25, 0, 30, 0);
 		glColor3f(red3, green3, blue3);
-		Balok(-85, -55, 35, 0, 20, 0);
+		Balok(-85, -50.1, 35, 0, 30, 0);
+	glPopMatrix();
+}
+
+void Gedung2(float red1, float green1, float blue1, float red2, float green2, float blue2) {
+	glPushMatrix();
+		glColor3f(red1, green1, blue1);
+		Balok(-30, 0, 40, 0, 30, 0);
+		glColor3f(red2, green2, blue2);
+		Balok(-50, -30.1, 25, 0, 30, 0);
 	glPopMatrix();
 }
 
