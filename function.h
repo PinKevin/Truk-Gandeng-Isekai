@@ -18,11 +18,13 @@ void Grid();
 void Jalan();
 void GarisJalan();
 void JalanTotal();
+void Trotoar(int N, float red1, float green1, float blue1, float red2, float green2, float blue2);
 void Palang(int N, float red1, float green1, float blue1, float red2, float green2, float blue2);
 void PelengkapPalang(float red1, float green1, float blue1, float Rc, float Gc, float Bc);
-void TiangListrik(float red1, float green1, float blue1, float red2, float green2, float blue2);
+void TiangListrik(float red1, float green1, float blue1, float red2, float green2, float blue2, float red3, float green3, float blue3);
 void KabelListrik(float red1, float green1, float blue1, float JarakTiang);
-void Gedung(float red1, float green1, float blue1, float red2, float green2, float blue2, float red3, float green3, float blue3);
+void Gedung3(float red1, float green1, float blue1, float red2, float green2, float blue2, float red3, float green3, float blue3);
+void Gedung2(float red1, float green1, float blue1, float red2, float green2, float blue2); 
 
 // environment
 void lighting();
