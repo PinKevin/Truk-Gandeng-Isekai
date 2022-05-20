@@ -5,4 +5,5 @@ Fitur :
   Maju-mundur-kiri-kanan terbatas hanya pada wilayah main
 - Bisa nabrak palang
 - Palang yang bisa buka tutup
+- Halang rintang
 - Gedung, jalan, tiang listrik + lampu, kabel listrik
