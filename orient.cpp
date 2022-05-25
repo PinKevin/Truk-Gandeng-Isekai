@@ -53,11 +53,3 @@ void moveMeFlat(int i)
 		0.0f, 1.0f, 0.0f
 	);
 }
-
-void KameraAtasFix() {
-	gluLookAt(
-		10.0f, 5.0f, 3.0f,
-		x, y, z,
-		0.0f, 1.0f, 0.0f
-	);
-}
