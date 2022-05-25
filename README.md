@@ -7,3 +7,6 @@ Fitur :
 - Palang yang bisa buka tutup
 - Halang rintang
 - Gedung, jalan, tiang listrik + lampu, kabel listrik
+- Lighting, Shadow
+
+Teksturnya ngambek, jadi gak ada teksturnya :(
