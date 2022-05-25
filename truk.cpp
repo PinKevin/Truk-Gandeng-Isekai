@@ -8,53 +8,9 @@
 #else
 #include <GL/glut.h>
 #endif
-#include "imageloader.h"
 
 int i, j, radius, jumlah_titik, x_tengah, y_tengah;
 const double PI = 3.141592653589793;
-
-GLuint _textureId1; //ID OpenGL untuk tekstur
-GLuint _textureId2;
-GLuint _textureId3; 
-GLuint _textureId4;
-GLuint _textureId5; 
-GLuint _textureId6;
-
-GLuint loadTexture(Image* image) {
-	GLuint textureId; 
-	glGenTextures(1, &textureId);
-	glBindTexture(GL_TEXTURE_2D, textureId);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image->width, image->height, 0, GL_RGB, GL_UNSIGNED_BYTE, image->pixels);
-	return textureId;
-}
-
-void initRendering() {
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-	glEnable(GL_NORMALIZE);
-	glEnable(GL_COLOR_MATERIAL);
-	
-	Image* image1 = loadBMP("bg1.bmp");
-	_textureId1 = loadTexture(image1);
-	
-//	Image* image2 = loadBMP("bg2.bmp");
-//	_textureId2 = loadTexture(image2);
-//	
-//	Image* image3 = loadBMP("bg3.bmp");
-//	_textureId3 = loadTexture(image3);
-//	
-//	Image* image4 = loadBMP("bg4.bmp");
-//	_textureId4 = loadTexture(image4);
-//	
-//	Image* image5 = loadBMP("bg5.bmp");
-//	_textureId5 = loadTexture(image5);
-//	
-//	Image* image6 = loadBMP("bg6.bmp");
-//	_textureId6 = loadTexture(image6);
-	
-	delete image1;// , image2, image3, image4, image5, image6;
-}
 
 void Roda(float red1, float green1, float blue1)
 {
@@ -228,12 +184,7 @@ void Kontainer(float red1, float green1, float blue1)
 	glEnable(GL_TEXTURE_2D);
 	// kiri kontainer
 	glPushMatrix();
-		
-//		glBindTexture(GL_TEXTURE_2D, _textureId1);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glColor3f(red1, green1, blue1);
-		
 		glTranslatef(0, 3.5, 3);
 		glBegin(GL_QUADS);
 			glVertex3f(-3.0f, 2.0f, 0.0f);
