@@ -86,33 +86,33 @@ void JalanTotal() {
 void Trotoar(int N, float red1, float green1, float blue1, float red2, float green2, float blue2) {
 	for (int j = 1; j <= N; j++) {
 			glColor3f(red1, green1, blue1);
-			glBegin(GL_QUADS); // merah depan
+			glBegin(GL_QUADS); 
 				glVertex3f(-4.0f, 1.0f, 0.0f);
 				glVertex3f(-4.0f, 0.0f, 0.0f);
 				glVertex3f(-2.0f, 0.0f, 0.0f);
 				glVertex3f(-2.0f, 1.0f, 0.0f);
 			glEnd();
-			glBegin(GL_QUADS); // merah belakang
+			glBegin(GL_QUADS); 
 				glVertex3f(-4.0f, 1.0f, -2.0f);
 				glVertex3f(-4.0f, 0.0f, -2.0f);
 				glVertex3f(-2.0f, 0.0f, -2.0f);
 				glVertex3f(-2.0f, 1.0f, -2.0f);
 			glEnd();
 			if (j == 1) {
-				glBegin(GL_QUADS); // merah samping
+				glBegin(GL_QUADS); 
 					glVertex3f(-4.0f, 1.0f, -2.0f);
 					glVertex3f(-4.0f, 0.0f, -2.0f);
 					glVertex3f(-4.0f, 0.0f, 0.0f);
 					glVertex3f(-4.0f, 1.0f, 0.0f);
 				glEnd();
 			}
-			glBegin(GL_QUADS); // merah atas
+			glBegin(GL_QUADS); 
 				glVertex3f(-4.0f, 1.0f, -2.0f);
 				glVertex3f(-4.0f, 1.0f, 0.0f);
 				glVertex3f(-2.0f, 1.0f, 0.0f);
 				glVertex3f(-2.0f, 1.0f, -2.0f);
 			glEnd();
-			glBegin(GL_QUADS); // merah bawah
+			glBegin(GL_QUADS); 
 				glVertex3f(-4.0f, 0.0f, -2.0f);
 				glVertex3f(-4.0f, 0.0f, 0.0f);
 				glVertex3f(-2.0f, 0.0f, 0.0f);
@@ -120,33 +120,33 @@ void Trotoar(int N, float red1, float green1, float blue1, float red2, float gre
 			glEnd();
 			
 			glColor3f(red2, green2, blue2);
-			glBegin(GL_QUADS); // putih depan
+			glBegin(GL_QUADS); 
 				glVertex3f(-2.0f, 0.0f, 0.0f);
 				glVertex3f(-2.0f, 1.0f, 0.0f);
 				glVertex3f(0.0f, 1.0f, 0.0f);
 				glVertex3f(0.0f, 0.0f, 0.0f);
 			glEnd();
-			glBegin(GL_QUADS); // putih belakang
+			glBegin(GL_QUADS); 
 				glVertex3f(-2.0f, 0.0f, -2.0f);
 				glVertex3f(-2.0f, 1.0f, -2.0f);
 				glVertex3f(0.0f, 1.0f, -2.0f);
 				glVertex3f(0.0f, 0.0f, -2.0f);
 			glEnd();
 			if (j == N) {
-				glBegin(GL_QUADS); // putih samping
+				glBegin(GL_QUADS);
 					glVertex3f(0.0f, 1.0f, -2.0f);
 					glVertex3f(0.0f, 0.0f, -2.0f);
 					glVertex3f(0.0f, 0.0f, 0.0f);
 					glVertex3f(0.0f, 1.0f, 0.0f);
 				glEnd();
 			}
-			glBegin(GL_QUADS); // putih atas
+			glBegin(GL_QUADS); 
 				glVertex3f(-2.0f, 1.0f, -2.0f);
 				glVertex3f(-2.0f, 1.0f, 0.0f);
 				glVertex3f(-0.0f, 1.0f, 0.0f);
 				glVertex3f(-0.0f, 1.0f, -2.0f);
 			glEnd();
-			glBegin(GL_QUADS); // putih bawah
+			glBegin(GL_QUADS); 
 				glVertex3f(-2.0f, 0.0f, -2.0f);
 				glVertex3f(-2.0f, 0.0f, 0.0f);
 				glVertex3f(-0.0f, 0.0f, 0.0f);
@@ -265,13 +265,6 @@ void TiangListrik(float red1, float green1, float blue1, float red2, float green
 		glColor3f(red2, green2, blue2);
 		Balok(-3.5, -2.5, 14, 15, 0.5, 0);
 	glPopMatrix();
-//	// pucuk kanan
-//	glPushMatrix();
-//		glColor3f(red1, green1, blue1);
-//		Balok(-1, 0, 6, 7, 0.5, 0);
-//		glColor3f(red2, green2, blue2);
-//		Balok(-1, 0, 7, 8, 0.5, 0);
-//	glPopMatrix();
 	// pucuk kiri
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
@@ -279,11 +272,6 @@ void TiangListrik(float red1, float green1, float blue1, float red2, float green
 		glColor3f(red2, green2, blue2);
 		Balok(-5.5, -4.5, 14, 15, 0.5, 0);
 	glPopMatrix();
-//	// penghubung kanan
-//	glPushMatrix();
-//		glColor3f(red1, green1, blue1);
-//		Balok(-2, 0, 5, 6, 0.5, 0);
-//	glPopMatrix();
 	// penghubung kiri
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
@@ -303,11 +291,6 @@ void KabelListrik(float red1, float green1, float blue1, float JarakTiang) {
 		glColor3f(red1, green1, blue1);
 		Balok(-3.15, -2.85, 14.25, 14.75, 0, JarakTiang);
 	glPopMatrix();
-//	// kabel kanan
-//	glPushMatrix();
-//		glColor3f(red1, green1, blue1);
-//		Balok(-0.65, -0.35, 7.25, 7.75, 0, JarakTiang);
-//	glPopMatrix();
 	// kabel kiri
 	glPushMatrix();
 		glColor3f(red1, green1, blue1);
