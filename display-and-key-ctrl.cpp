@@ -2,9 +2,10 @@
 #include <stdio.h>
 #include "function.h"
 
+
 float l[] = { 0.0, 20.0, 10.0 }; // koordinat sumber cahaya
-float n[] = { 0.0, -40.0, 0.0 };
-float e[] = { 0.0, 0.0, 0.0 };
+float n[] = { 0.0, -20.0, 0.0 };
+float e[] = { 0.0, 0.002, 0.0 };
 
 float angle = 0.0, deltaAngle = 0.0;
 int deltaMove = 0 ;
@@ -32,8 +33,9 @@ void display()
 	
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.53f, 0.8f, 0.92f, 1.0f);
-//	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	glDisable(GL_CULL_FACE);
+	
+	glEnable(GL_LIGHTING);
 	// Gambar Jalan
 	glPushMatrix();
 		for (int k = 1; k <= loopJalan; k++) {
@@ -69,6 +71,7 @@ void display()
 	glPopMatrix();
 	glPushMatrix();
 		glColor3f(0.7, 0.7, 0.7);
+		glEnable(GL_TEXTURE_2D);
 		for (int k = 1; k <= loopJalan; k++) {
 			if (k == 1) {
 				Balok(-4, 18, 1, 0, 10, 18);	
@@ -81,6 +84,7 @@ void display()
 				glTranslatef(-24, 0, 0);	
 			}
 		}
+		glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 	
 	// Trotoar Kanan
@@ -171,7 +175,6 @@ void display()
 		glPushMatrix();
 			glRotatef(270, 0, 1, 0);
 			glTranslatef(-22, 0, 452.75);
-//			glRotatef(90, 0, 1, 0);
 			for (int i = 1; i <= nLstrk; i++) {
 				TiangListrik(0.6, 0.6, 0.6, 0.2, 0.2, 0.2, 1, 1, 0);
 				if (i < nLstrk) {
@@ -192,6 +195,10 @@ void display()
 				glTranslatef(-85.1, 0, 0);
 			}
 		glPopMatrix();
+		glPushMatrix();
+			glColor3f(0, 0, 1);
+			Balok(16, 20, 40, 0, 50, 20);
+		glPopMatrix();
 		// gedung kanan
 		glPushMatrix();
 			glRotatef(180, 0, 1, 0);
@@ -204,6 +211,11 @@ void display()
 				Gedung3(0, 0.1, 1.0, 0, 1, 0, 1, 0, 0);
 				glTranslatef(-85.1, 0, 0);
 			}
+		glPopMatrix();
+		glPushMatrix();
+			glColor3f(0, 1, 0);
+			glTranslatef(0, 0, -86);
+			Balok(15.4001, 20, 40, 0, 50, 20);
 		glPopMatrix();
 		// gedung blkg truk
 		glPushMatrix();
@@ -219,47 +231,107 @@ void display()
 		glPopMatrix();
 	glPopMatrix();
 	
+	
 	// gambar shadow
 	glPushMatrix();
+		glDisable(GL_LIGHTING);
 		glShadowProjection(l, e, n);
-		glColor3f(0.4, 0.4, 0.4);
 		glPushMatrix();
-			glTranslatef(0.0, 2, 2);
+			glTranslatef(-50.5, 2.3, 5);
 			glRotatef(rotPalang, 1, 0, 0);
 			glTranslatef(0.0, -2, -2);
-			Palang(4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);	
+			Palang(7, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2);	
 		glPopMatrix();
 		glPushMatrix();
-			PelengkapPalang(0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
+			glTranslatef(-50.5, 0, 3);
+			PelengkapPalang(0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
 			glTranslatef(-0.999, 0, 0);
-			PelengkapPalang(0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
+			PelengkapPalang(0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
+		glPopMatrix();
+		// halang rintang
+		glPushMatrix();
+			glColor3f(0.2, 0.2, 0.2);
+			Balok(-150, -155, 5, 0, 3, -3);
+			Balok(-190, -195, 5, 0, -13, -19);
+			Balok(-230, -235, 5, 0, -5, -11);
 		glPopMatrix();
 		glPushMatrix();
 			glTranslatef(posTrukX, 0, posTrukZ);
 			glRotatef(hadapTruk, 0, 1, 0);
-//			TrukTotal(
-//				0.2, 0.2, 0.2,
-//				0.2, 0.2, 0.2,
-//				0.2, 0.2, 0.2
-//			);
+			TrukTotal(
+				0.2, 0.2, 0.2,
+				0.2, 0.2, 0.2,
+				0.2, 0.2, 0.2
+			);
 		glPopMatrix();
+		// tiang kiri
 		glPushMatrix();
-			glTranslatef(-20, 0, 6);
+			glTranslatef(14.75, 0, 6);
 			glRotatef(90, 0, 1, 0);
 			for (int i = 1; i <= nLstrk; i++) {
 				TiangListrik(0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
 				if (i < nLstrk) {
-					KabelListrik(0.2, 0.2, 0.2, -30);
+					KabelListrik(0.2, 0.2, 0.2, -36);
 				}
-				glTranslatef(0, 0, -30);	
+				glTranslatef(0, 0, -36);	
+			}
+		glPopMatrix();
+		// tiang kanan
+		glPushMatrix();
+			glTranslatef(-22, 0, 452.75);
+			for (int i = 1; i <= nLstrk; i++) {
+				TiangListrik(0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
+				if (i < nLstrk) {
+					KabelListrik(0.2, 0.2, 0.2, -36);
+				}
+				glTranslatef(0, 0, -36);	
+			}
+		glPopMatrix();
+		// gedung kiri
+		glPushMatrix();
+			glTranslatef(16, 0, 20.001);
+			for (int k = 1; k <= nGdg; k++) {
+				if (k == nGdg) {
+					Gedung2(0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
+					break;
+				}
+				Gedung3(0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
+				glTranslatef(-85.1, 0, 0);
 			}
 		glPopMatrix();
 		glPushMatrix();
-			glTranslatef(0, 0, 30);
+			glColor3f(0.2, 0.2, 0.2);
+			Balok(16, 20, 40, 0, 50, 20);
+		glPopMatrix();
+		// gedung kanan
+		glPushMatrix();
+			glRotatef(180, 0, 1, 0);
+			glTranslatef(460, 0, 36.001);
 			for (int k = 1; k <= nGdg; k++) {
-//				Gedung(0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
-				glTranslatef(-90, 0, 0);
+				if (k == nGdg) {
+					Gedung2(0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
+					break;
+				}
+				Gedung3(0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
+				glTranslatef(-85.1, 0, 0);
 			}
+		glPopMatrix();
+		glPushMatrix();
+			glColor3f(0.2, 0.2, 0.2);
+			glTranslatef(0, 0, -86);
+			Balok(15.4001, 20, 40, 0, 50, 20);
+		glPopMatrix();
+		// gedung blkg truk
+		glPushMatrix();
+			glRotatef(90, 0, 1, 0);
+			glTranslatef(50, 0, 20.001);
+			Gedung3(0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
+		glPopMatrix();
+		// gedung ujung
+		glPushMatrix();
+			glRotatef(270, 0, 1, 0);
+			glTranslatef(30, 0, 460.001);
+			Gedung3(0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.2);
 		glPopMatrix();
 	glPopMatrix();
 	
