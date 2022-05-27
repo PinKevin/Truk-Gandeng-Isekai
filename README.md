@@ -10,3 +10,5 @@ Fitur :
 - Lighting, Shadow
 
 Teksturnya ngambek, jadi gak ada teksturnya :(
+
+.exe sudah tersedia kalau mau langsung coba 😁😁😁
