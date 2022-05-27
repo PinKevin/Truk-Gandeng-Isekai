@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "function.h"
 
-
 float l[] = { 0.0, 20.0, 10.0 }; // koordinat sumber cahaya
 float n[] = { 0.0, -20.0, 0.0 };
 float e[] = { 0.0, 0.002, 0.0 };
@@ -11,7 +10,6 @@ float angle = 0.0, deltaAngle = 0.0;
 int deltaMove = 0 ;
 
 float posTrukX = 0.0, posTrukZ = 0.0;
-int hadapTruk = 0, cekHadapTruk = 0;
 
 float rotPalang = 0.0;
 int cekPalang = 0, PlgRc = 1, PlgGc = 0, PlgBc = 0;
@@ -152,7 +150,6 @@ void display()
 		glPopMatrix();
 		glPushMatrix();
 			glTranslatef(posTrukX, 0, posTrukZ);
-			glRotatef(hadapTruk, 0, 1, 0);
 			TrukTotal(
 				0, 1, 0,
 				1, 1, 0,
@@ -257,7 +254,6 @@ void display()
 		glPopMatrix();
 		glPushMatrix();
 			glTranslatef(posTrukX, 0, posTrukZ);
-			glRotatef(hadapTruk, 0, 1, 0);
 			TrukTotal(
 				0.2, 0.2, 0.2,
 				0.2, 0.2, 0.2,
